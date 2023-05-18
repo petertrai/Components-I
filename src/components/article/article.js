@@ -87,8 +87,63 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  }, 
+  {
+    title: 'Professional Software Development in 2019',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. dog dog... dog dog dog; dog dog. dog dog dog, dog, dog
+          dog. dog, dog. dog. dog, dog - dog... dog dog dog; dog dog dog, dog dog?! dog dog, dog.
+          dog dog dog dog dog! dog dog - dog dog, dog dog dog dog dog; dog dog? `,
+
+    secondParagraph: `dog, dog. dog. dog, dog, dog. dog dog, dog. dog dog, dog, dog dog. dog! dog dog, dog;
+          dog dog dog? dog, dog. dog. dog, dog - dog dog, dog dog dog! dog, dog. dog. dog, dog
+          dog, dog dog, dog, dog dog. dog dog - dog - dog... dog dog dog dog dog dog dog?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
+const articleMaker = (articleObj) => {
+const articleWrapper = document.createElement('div');
+const articleTitle = document.createElement('h2');
+const articleDate = document.createElement('p')
+const articleParagraphOne = document.createElement('p');
+const articleParagraphTwo = document.createElement('p');
+const articleParagraphThree = document.createElement('p');
+const expandButton = document.createElement('span');
+
+articleWrapper.classList.add('article');
+articleDate.classList.add('date');
+expandButton.classList.add('expandButton');
+
+articleWrapper.appendChild(articleTitle);
+articleWrapper.appendChild(articleDate);
+articleWrapper.appendChild(articleParagraphOne);
+articleWrapper.appendChild(articleParagraphTwo);
+articleWrapper.appendChild(articleParagraphThree);
+articleWrapper.appendChild(expandButton);
+
+articleTitle.textContent = articleObj.title
+articleDate.textContent = articleObj.date
+articleParagraphOne.textContent = articleObj.firstParagraph
+articleParagraphTwo.textContent = articleObj.secondParagraph
+articleParagraphThree.textContent = articleObj.thirdParagraph
+expandButton.textContent = '+'
+
+expandButton.addEventListener('click', () => {
+  articleWrapper.classList.toggle('article-open')
+})
+
+  return articleWrapper;
+}
+
+data.forEach(article => {
+  document.querySelector('div.articles').appendChild(articleMaker(article));
+})
+//find what you want to append and then append what the first function is returning when you put each article through it one at a time.
+// articleWrapper = document.querySelector('div-articles')
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
